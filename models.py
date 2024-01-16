@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from sqlalchemy import String
 from db import engine
 
 from sqlalchemy.orm import DeclarativeBase
@@ -17,7 +18,7 @@ class Base (DeclarativeBase):
 class Group(Base):
     __tablename__ = "groups"
     group_id: Mapped[int] = mapped_column(primary_key=True)
-    group_name: Mapped[str] = mapped_column(str(10))
+    group_name: Mapped[str] = mapped_column(String(10))
     students_list: Mapped[list["Student"]] = relationship(back_populates="group")
     
 
@@ -26,7 +27,7 @@ class Group(Base):
 class Student(Base):
     __tablename__ = "students"
     student_id: Mapped[int] = mapped_column(primary_key=True)
-    student_name: Mapped[str] = mapped_column(str(50))
+    student_name: Mapped[str] = mapped_column(String(50))
     group_id: Mapped[int] = mapped_column(ForeignKey("groups.group_id"))
     group: Mapped["Group"] = relationship("Group", back_populates="students_list")
 
@@ -35,14 +36,14 @@ class Student(Base):
 class Professor(Base):
     __tablename__ = "professors"
     professor_id: Mapped[int] = mapped_column(primary_key=True)
-    professor_name: Mapped[str] = mapped_column(str(50))
+    professor_name: Mapped[str] = mapped_column(String(50))
 
 
 # Table subjects
 class Subject(Base):
     __tablename__ = "subjects"
     subject_id: Mapped[int] = mapped_column(primary_key=True)
-    subject_name: Mapped[str] = mapped_column(str(25), unique=True)
+    subject_name: Mapped[str] = mapped_column(String(25), unique=True)
     professor_id: Mapped[int] = mapped_column(ForeignKey("professors.professor_id"))
     professor: Mapped["Professor"] = relationship("Professor", backref="subjects")
 
