@@ -160,50 +160,60 @@ def select_9():
 def select_10():
     result = (
         session.query(
-            Student.student_id, 
-            Student.student_name, 
-            Professor.professor_id, 
-            Professor.professor_name, 
-            Subject.subject_name)
-            .select_from(Grade)
-            .join(Subject)
-            .join(Professor)
-            .join(Student)
-            .filter(Student.student_id == 10)
-            .filter(Professor.professor_id == 3)
-            .group_by(Student.student_id, Subject.subject_id, Professor.professor_id)
-            .all()
-            )
+            Student.student_id,
+            Student.student_name,
+            Professor.professor_id,
+            Professor.professor_name,
+            Subject.subject_name,
+        )
+        .select_from(Grade)
+        .join(Subject)
+        .join(Professor)
+        .join(Student)
+        .filter(Student.student_id == 10)
+        .filter(Professor.professor_id == 3)
+        .group_by(Student.student_id, Subject.subject_id, Professor.professor_id)
+        .all()
+    )
     return result
 
 
 if __name__ == "__main__":
-    print(        "--- QUERY 01 ---\n 5 students with the highest average score in all subjects:")
+    print(
+        "--- QUERY 01 ---\n 5 students with the highest average score in all subjects:"
+    )
     pprint(select_1())
 
-    print("--- QUERY 02 ---\n the student with the highest average score in Math:")
+    print(
+        "\n", "--- QUERY 02 ---\n the student with the highest average score in Math:"
+    )
     pprint(select_2())
 
-    print("--- QUERY 03 ---\n average score in Math in groups:")
+    print("\n", "--- QUERY 03 ---\n average score in Math in groups:")
     pprint(select_3())
 
-    print("--- QUERY 04 ---\n average grade:")
+    print("\n", "--- QUERY 04 ---\n average grade:")
     pprint(select_4())
 
-    print("--- QUERY 05 ---\n subject of professor with ID=2")
+    print("\n", "--- QUERY 05 ---\n subject of professor with ID=2")
     pprint(select_5())
 
-    print("--- QUERY 06 ---\n students from the group with ID=3")
+    print("\n", "--- QUERY 06 ---\n students from the group with ID=3")
     pprint(select_6())
 
-    print("--- QUERY 07 ---\n grades in Physics of students of the group with ID=1")
+    print(
+        "\n", "--- QUERY 07 ---\n grades in Physics of students of the group with ID=1"
+    )
     pprint(select_7())
 
-    print("--- QUERY 08 ---\n average grade gived by professor with ID=2")
+    print("\n", "--- QUERY 08 ---\n average grade gived by professor with ID=2")
     pprint(select_8())
 
-    print("--- QUERY 09 ---\n subjects of student with ID=8")
+    print("\n", "--- QUERY 09 ---\n subjects of student with ID=8")
     pprint(select_9())
 
-    print("--- QUERY 10 ---\n list of subjects taught by the professor with ID=3 to a student with ID=10")
+    print(
+        "\n",
+        "--- QUERY 10 ---\n list of subjects taught by the professor with ID=3 to a student with ID=10",
+    )
     pprint(select_10())
