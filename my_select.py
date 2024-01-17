@@ -178,7 +178,10 @@ def select_10():
     return result
 
 
+
 if __name__ == "__main__":
+
+
     print(
         "--- QUERY 01 ---\n 5 students with the highest average score in all subjects:"
     )
