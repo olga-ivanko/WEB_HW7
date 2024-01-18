@@ -5,8 +5,6 @@ from pprint import pprint
 from random import choice, randint
 from datetime import datetime
 
-MODELS = {}
-
 
 def create(model, name):
     if model == "Group":
@@ -61,7 +59,6 @@ def read(model):
         data = Grade
 
     result = session.query("*").select_from(data).all()
-    session.commit()
     return result
 
 
@@ -115,16 +112,15 @@ def delete(model, id):
 if __name__ == "__main__":
     # pprint(read("Grade"))
     # pprint(update("Grade", "953", "200500"))
-    # pprint(create("Grade", "100500"))
+    # pprint(create("Professor", "New Professor"))
     # pprint(delete("Grade", "953"))
     # pprint(read("Grade"))
     # pprint(read("Subject"))
     # pprint(update("Student", "53", "Mykola"))
     # pprint(update("Student", "53", "Mykola"))
-    # pprint(delete("Professor", "6"))
+    #pprint(delete("Professor", "7"))
     # pprint(delete("Subject", "6"))
     # pprint(read("Subject"))
-    # pprint(read("Professor"))
+    pprint(read("Professor"))
 
     # pprint(read("Group"))
-    pass
