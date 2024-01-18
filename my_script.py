@@ -1,5 +1,6 @@
 import argparse
 from my_crud import create, read, update, delete
+from pprint import pprint
 
 parser = argparse.ArgumentParser()
 
@@ -30,8 +31,8 @@ def action_func():
 
 
 if __name__ == "__main__":
-    # print(sys.path)
-    print(action_func())
+    
+    pprint(action_func())
 # py my_script.py --action create -m Professor --name 'Boris Jonson' створення вчителя
 # py my_script.py --action list -m Professor показати всіх вчителів
 # py my_script.py --action list --model Professor показати всіх вчителів
